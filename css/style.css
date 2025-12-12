@@ -1,0 +1,173 @@
+
+
+
+@font-face {
+    font-family: ;
+    src: url('');
+}
+
+@font-face {
+  font-family: ;
+  src: url('');
+}
+
+@font-face {
+  font-family: ;
+  src: url('');
+}
+
+
+body {
+    color: #000;
+    font-family: ;
+    font-size: 11pt;
+    text-align: center;
+    letter-spacing:1px;
+    background: #bfbfbf;
+    padding: 0;
+    margin: 0 auto;
+}
+
+/*a:link { color:#0074ff; }*/
+a:visited { color:back;}
+a:hover { text-decoration:underline; outline:none; cursor: grab;}
+a:active { text-decoration:none; outline:none; }
+
+/* Column 2 links - looks exactly like regular text (black, no underline) unless hovered */
+a.column2-link {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+a.column2-link:visited {
+    color: #000 !important;
+    text-decoration: underline !important;}
+
+a.column2-link:hover {
+    text-decoration: underline dashed !important;
+    cursor: grab;
+}
+
+.column1-img {
+    filter: url(#photocopy-texture) brightness(1.9) contrast(1.1) grayscale(1);
+
+}
+
+/* Soften the filter when hovering the column 1 image itself */
+/* .column1-img:hover {
+    filter: grayscale(20%) contrast(100%) brightness(100%) !important;
+} */
+
+a.column2-link:active {
+    color: #000 !important;
+    text-decoration: underline;
+}
+
+tr:hover {background-color:none;}
+
+.table {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  color: black;
+}
+
+.table th,
+.table thead th {
+  font-weight: normal;
+}
+
+.table-sm th,
+.table-sm td {
+  padding: 0rem;
+}
+
+/* .table-bordered {
+  border: 1px dotted grey;
+  border-collapse: collapse;
+} */
+
+/* .table-bordered th,
+.table-bordered td {
+  border: 1px dotted #000000;
+} */
+
+/* .table-bordered thead th,
+.table-bordered thead td {
+  border-bottom: 1px dotted #000;
+} */
+
+/* Add padding to column 1 cells */
+.table td:first-child,
+.table th:first-child {
+  padding: 1em;
+}
+
+.table-grid {
+    width:80%;
+    margin:0 auto;
+}
+
+.dataTables_filter {
+     display: none;
+}
+
+.dataTables_info {
+     display: none;
+}
+
+.zoom {
+  padding: 0px;
+  transition: transform 0s;
+  height: 30px;
+  margin: 0 auto;
+  transform-origin: left top;
+}
+
+
+
+.gridimg {
+    width:75%;
+    padding: 10px;
+}
+
+.hiddenRow {
+    padding: 0 !important;
+}
+.hidden{display:none;visibility:hidden}
+
+.thumbnail {
+    visibility: hidden;
+}
+
+footer {
+    margin-top: 15pt;
+    margin-bottom: 15pt;
+    font-size: 7pt;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.mode {
+    font-size: 9pt;
+}
+
+.mode:hover {
+    color: white;
+    font-weight: bold;
+}
+
+
+
+@media screen and (max-width: 704px) {
+  
+.v2 {
+    display: none;
+}
+
+.v3 {
+    display: none;
+}
+
+body {
+    margin-bottom: 50px;
+}
+
