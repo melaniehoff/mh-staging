@@ -1,0 +1,55 @@
+# === image resize configuration
+# https://codeberg.org/ukrudt.net/lichen-markdown/issues/23
+# A bug was found with the image resizing code when running lichen-markdown within a docker container,
+# so for now this is commented out by default.
+# SetEnv IMG_RESIZE_ENABLE true
+# SetEnv IMG_RESIZE_MAX_WIDTH 640
+
+# === caching configuration
+Header set Cache-Control "no-cache"
+
+DirectoryIndex index.md index.gmi
+#ErrorDocument 404 /index.gmi
+
+RewriteEngine on
+RewriteBase /
+
+# === stop further internal redirects to /cms
+RewriteCond %{ENV:REDIRECT_STATUS} ^
+RewriteRule ^cms/ - [NC,L]
+
+# === prevent direct access to /theme
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^theme/ - [R=404,NC,L]
+
+# check for an HTML file in "dist/"
+RewriteCond %{DOCUMENT_ROOT}/dist%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ /dist/$1.html [L]
+
+# === discard .gmi extensions and redirect
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^(.*)\.gmi$ $1 [R=301,NC,L]
+
+# === discard .md extensions and redirect
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^(.*)\.md$ $1 [R=301,NC,L]
+
+# === try .md files without extensions
+RewriteCond %{REQUEST_FILENAME}.md -f
+RewriteRule ^ %{REQUEST_URI}.md
+
+# === try .gmi files without extensions
+RewriteCond %{REQUEST_FILENAME}.gmi -f
+RewriteRule ^ %{REQUEST_URI}.gmi
+
+# === render .gmi files
+RewriteCond %{REQUEST_FILENAME} \.gmi$ [NC]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ /cms/render.php%{REQUEST_URI} [E=authbypass,L]
+
+# === render .md files
+RewriteCond %{REQUEST_FILENAME} \.md$ [NC]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ /cms/render.php%{REQUEST_URI} [E=authbypass,L]

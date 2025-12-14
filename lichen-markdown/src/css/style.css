@@ -1,0 +1,29 @@
+
+
+
+@font-face {
+    font-family: 'c4v';
+    src: url('../assets/C4v.4-Regular.otf');
+}
+
+@font-face {
+  font-family: 'diolce';
+  src: url('../assets/Diolce-Regular.otf');
+}
+
+@font-face {
+  font-family: ;
+  src: url('');
+}
+
+
+body {
+  background: #bfbfbf;
+
+}
+
+/*a:link { color:#0074ff; }*/
+a:visited { color:blue;}
+a:hover { text-decoration:underline; outline:none; cursor: grab;}
+a:active { text-decoration:none; outline:none; }
+
