@@ -39,6 +39,18 @@ function isImageUrl(value) {
     return /\.(jpg|jpeg|png|gif|webp|svg|bmp|ico)(\?.*)?$/i.test(trimmed);
 }
 
+// Helper function to convert text to URL-friendly format (lowercase, spaces to dashes)
+function textToUrl(text) {
+    if (!text || typeof text !== 'string') return '';
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .replace(/-+/g, '-') // Replace multiple hyphens with single
+        .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+}
+
 function parseCSV(csvText) {
     const lines = csvText.split('\n').filter(line => line.trim());
     if (lines.length < 2) return { headers: [], data: [] }; // Need at least 2 rows (skip row 0, use row 1 as header)
@@ -132,8 +144,8 @@ function loadFromCSV(csvUrl, tableId) {
                 
                 // Make column 2 a link
                 if (isColumn2 && type === 'display' && data) {
-                    // Use the data as both href and text
-                    const href = data.trim();
+                    // Convert text to URL-friendly format for href
+                    const href = textToUrl(data);
                     return `<a href="${href}" class="column2-link">${data}</a>`;
                 }
                 

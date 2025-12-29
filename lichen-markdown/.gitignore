@@ -5,3 +5,4 @@ deploy.sh
 run.sh
 /src/dist
 /dist
+/src/assets/square-main.png

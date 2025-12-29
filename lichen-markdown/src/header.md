@@ -1,3 +1,3 @@
 <menu>
-[←](https://melaniehoff.com)
+[←](/index.html)
 </menu>
